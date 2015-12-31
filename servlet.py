@@ -644,7 +644,7 @@ class SuggestionHandler(BaseHandler):
 
         logging.info("Suggestion (%s): Context is %s \n Word: %s ; New Word: %s " % (langpair, context, word, newWord))
 
-        from util import addSuggestion
+        from wiki_util import addSuggestion
         data = {
             'context': context, 'langpair': langpair,
             'word': word, 'newWord': newWord
@@ -828,7 +828,7 @@ if __name__ == '__main__':
             logging.error('requests module is required for SuggestionHandler')
 
         if requestsImported:
-            from util import wikiLogin, wikiGetToken
+            from wiki_util import wikiLogin, wikiGetToken
             SuggestionHandler.SUGGEST_URL = args.wiki_url
             SuggestionHandler.wiki_session = requests.Session()
             SuggestionHandler.auth_token = wikiLogin(
